@@ -1,0 +1,16 @@
+#Cache files
+*.pyc
+__pycache__/
+.vscode/
+.vs/
+
+#Media files
+media/**
+media_cdn/**
+
+#Environment files
+*.env
+.env*
+
+#SQLite DB
+*.sqlite3

@@ -1,0 +1,87 @@
+{% extends 'inicio.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>{% block Table_Title %}
+                Consulta
+            {% endblock %}</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+            {% block Table_Links %}
+                <li class="breadcrumb-item"><a href="#">Proveedores</a></li>
+                <li class="breadcrumb-item active">Consulta</li>
+            {% endblock %}
+            </ol>
+        </div>
+        </div>
+    </div><!-- /.container-fluid -->
+    </section>
+    
+    <!-- Main content -->
+    <div class="card">
+        <div class="card-header border-transparent">
+          <h3 class="card-title">{% block Table_Desc %} Listado de Proveedores {% endblock %}</h3>
+          {% block Card_Options %}
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        {% endblock %}
+
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped m-0">
+                    <thead>
+                        <tr>
+                            {% block Table_Head %}
+
+                            {% endblock %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% block Table_Body %}
+                                
+                            {% endblock %}
+                        
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            {% block Table_Foot %}
+                                
+                            {% endblock %}
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix">
+                {% block Table_Button %}
+
+                {% endblock %}
+            </div>
+            <!-- /.card-footer -->
+        </div>
+    <br>
+    
+            
+    {% block modal %}
+
+    {% endblock %}
+
+{% endblock %}

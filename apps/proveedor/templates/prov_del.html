@@ -1,0 +1,20 @@
+{% extends 'inicio.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<div class="row">
+    <div class="col-6">
+        <div class="card-body">
+            <p>Seguro que quieres borrar "{{item}}"?</p>
+
+            <form action="{% url 'u_prov_del' item.id_proveedor %}" method="POST">
+
+                {% csrf_token %}
+                <a class="btn btn-warning" href="{% url 'u_prov_list' %}">Cancelar</a>
+                <input class="btn btn-danger" type="submit" value="Aceptar">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'public/public_cat_table.html' %}
+{% load static %}
+
+{% block Table_Title %}
+<a href="{% url 'u_home' %}"><button type="button" class="btn btn-info float-left btn-sm"><i class="fas fa-solid fa-chevron-left"> Regresar</i></button></a>
+    
+{% endblock %}
+
+{% block Table_Links %}
+    <div class="input-group">
+        <input type="search" class="form-control form-control-lg" placeholder="Buscar">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-lg btn-default">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <a href="{% url 'u_export_excel' categoria.id_categoria %}"><button type="button" class="btn btn-primary float-right"><i class="fas fa-file-excel"> Excel </i></button></a>
+    </div>
+{% endblock %}
+
+{% block Table_Desc %}
+    {{ categoria.nombre | upper }}
+{% endblock %}
+
+{% block Table_Head %}
+    <th>Empresa</th>
+    <th>Descripción</th>
+    <th>Contacto</th>
+    <th>Estado</th>
+    <th style="width: 220px">Descargas</th>
+{% endblock %}
+
+{% block Table_Body %}
+    {% if proveedor %}
+        {% for prov in proveedor %}
+            <tr class="table-active">
+                <td scope="row">
+                    {% if prov.tipo.image %}
+                        <img src="{{ prov.tipo.image.url }}" style="width:20px; height:20px;" />
+                    {% else %}
+                        <img src="{% static '/img/logoGobYuc.png' %}" style="width:20px; height:20px;" />
+                    {% endif%}
+                    {{ prov.nombre }}
+                    {% if prov.facebook %}
+                        <a href="{{ prov.facebook }}" target="_blank"><button type="button" class="btn btn-info float-right btn-sm"><i class="fab fa-facebook-f"></i></button></a>
+                    {% endif %}
+                    {% if prov.sitioweb %}
+                        <a href="{{ prov.sitioweb }}" target="_blank"><button type="button" class="btn btn-info float-right btn-sm"><i class="fas fa-solid fa-globe"> web</i></button></a>
+                    {% endif %}
+                </td>
+                <td scope="row">{{ prov.descripcion }}</td>
+                <td scope="row">{{ prov.tel1 }}
+                    {% if prov.email %}
+                        <a href="mailto: {{ prov.email }}"><button type="button" class="btn btn-info float-right btn-sm"><i class="fas fa-solid fa-envelope"> email</i></button></a>
+                    {% endif %}
+                </td>
+                <td scope="row">{{ prov.estado }}</td>
+                <td>
+                    <a href="{% url 'u_pdf_view' prov.id_proveedor %}" target="_blank"><button type="button" class="btn btn-info btn-sm"><i class="fas fa-solid fa-eye"> ver</i></button></a>
+
+                    {% if prov.presentacion %}
+                        <a href="{{ prov.presentacion.url }}" target="_blank"><button type="button" class="btn btn-info btn-sm"><i class="fas fa-solid fa-file-pdf"> PDF</i></button></a>
+                    {% endif %}
+
+                    {% if prov.canaco %}
+                        <img src="{% static '/img/canaco.png' %}" style="width:20px; height:20px;" />
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+    <h1>No hay empresas registradas de {{ categoria.nombre }}</h1>
+    {% endif %}
+{% endblock %}
+
+{% block Table_Foot %}
+    
+{% endblock %}
+
+{% block Table_Button %}
+
+{% endblock %}
+
+{% block modal %}
+
+{% endblock %}

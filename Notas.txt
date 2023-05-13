@@ -1,0 +1,16 @@
+* Proceso de Instalación en máquina nueva
+1.- Instalar Python (Add python.exe to PATH)
+2.- Crear carpeta del proyecto
+3.- Crear ambiente virtual en carpeta
+4.- Copiar archivos
+
+* Requerimientos:
+Django - Framework
+Pillow - Manejo de Imagenes
+xlwt - Exportación a Excel
+django-adminlte3 - Formato para bootstrap
+python-decouple - para el manejo de .env
+django-crispy-forms - formularios con formato automático (como es version 2.0 hay que agregar otras cosas)
+crispy-bootstrap4 - debido a que crispy forms es version 2.0
+xhtml2pdf - Exportación básica a PDF
+pdfkit - Exportacion HTML a PDF Complicado

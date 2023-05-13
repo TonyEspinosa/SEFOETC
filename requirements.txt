@@ -1,0 +1,8 @@
+Django
+Pillow
+xlwt
+django-adminlte3
+python-decouple
+django-crispy-forms
+crispy-bootstrap4
+xhtml2pdf

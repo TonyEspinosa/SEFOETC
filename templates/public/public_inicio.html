@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="es">
+<head>
+    {% block extrahead %}
+    {% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include 'style.html'%}
+
+    <title>{% block title %} SEFOET v1.0 {% endblock %}</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+    <!-- Content Wrapper. Contains page content -->
+        <div>
+            <div class="card card-success">
+                <div class="card-body">
+                    <!-- Imagen de encabezado -->
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                        <div class="card mb-2 bg-gradient-dark">
+                            <a href="{% url 'u_home' %}">
+                                <img class="card-img-top" src="{% static 'img/ProvPortada.png' %}" alt="Secretaría de Fomento Económico y Trabajo">
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                
+                    {% block content %}
+                        <div class="row">
+                            {% if categorias %}
+                                {% for item in categorias %}
+                                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                                    <a href="{% url 'u_list' item.id_categoria %}" >
+                                        <button class="btn" type="submit" id="colorboton" style="background: {{item.color}};">
+                                            {% if item.image %}
+                                                <img src="{{ item.image.url }}" style="width:70px; height:65px;" />
+                                            {% endif  %}
+            
+                                            {% if not item.image %}
+                                                <img src="{% static '/img/logoGobYuc.png' %}" style="width:70px; height:65px;">
+                                            {% endif  %}
+                                            {% if item.nombre|length < 16 %}
+                                                <br>
+                                            {% endif %}
+                                            <br>{{ item.nombre|upper }}
+                                        </button>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <h1>No hay registros</h1>
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>    
+        </div>
+    <!-- /.content-wrapper -->
+
+        {% block footer %}
+            {% include 'footer.html'%}
+        {% endblock %}
+    </div>
+    <!-- ./wrapper -->
+
+{% include 'scripts.html'%}
+
+</body>
+</html>

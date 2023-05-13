@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SEFOET v1.0</title>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{% static 'admin-lte/dist/css/adminlte.min.css' %}">
+        
+    </head>
+    <body>
+        <h1><b><p style="color:#0062AE";>{{ proveedor.nombre | upper }}</p></b></h1>
+        <hr>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Categor&iacute;a</th>
+                                    <th>Tipo</th>
+                                    <th>Descripci&oacute;n</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <td>{{ proveedor.nombre }}</td>
+                                    <td>{{ proveedor.categoria }}</td>
+                                    <td>{{ proveedor.tipo }}</td>
+                                    <td>{{ proveedor.descripcion }}</td>  
+                                </tbody>                    
+                                </table>
+                                <br>
+                                <hr>                    
+                            </div>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Contacto</th>
+                                    <th>Puesto</th>
+                                    <th>Correo</th>
+                                    <th>Tel&eacute;fono(s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <td>{{ proveedor.contacto }}</td>
+                                    <td>{{ proveedor.puesto }} </td>
+                                    <td>{{ proveedor.email }}</td>
+                                    <td>{{ proveedor.tel1 }}  {{ proveedor.tel2 }}  </td>
+                                </tbody>                    
+                                </table>
+                                <br>
+                                <hr>                    
+                            </div>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Pa&iacute;s</th>
+                                    <th>Estado</th>
+                                    <th>Ciudad</th>
+                                    <th>Direcci&oacute;n</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <td>{{ proveedor.pais }}</td>
+                                    <td>{{ proveedor.estado }}</td>
+                                    <td>{{ proveedor.ciudad }}</td>
+                                    <td>{{ proveedor.direccion }}</td>
+                                </tbody>                    
+                                </table>
+                                <br>
+                                <hr>                    
+                            </div>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Sitio Web</th>
+                                    <th>P&aacute;gina de facebook</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <td>{{ proveedor.sitioweb }}</td>
+                                    <td>{{ proveedor.facebook }}</td>
+                                </tbody>                    
+                                </table>
+                                <br>
+                                <hr>                    
+                            </div>
+                            {% if proveedor.presentacion %}
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Presentaci&oacute;n</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td><a href="{{ prov.presentacion.url }}" target="_blank"><button type="button" class="btn btn-info btn-sm"><i class="fas fa-solid fa-file-pdf"> PDF</i></button></a></td>
+                                    </tbody>                    
+                                    </table>
+                                    <br>
+                                    <hr>                    
+                                </div>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+        </div>              
+        <hr>
+        {% include 'footer.html'%}
+    </body>
+</html>

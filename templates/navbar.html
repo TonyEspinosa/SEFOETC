@@ -1,0 +1,62 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container-fluid">
+      <a href="{% url 'u_home_priv' %}" class="navbar-brand">
+        <img src="{% static 'img/logoGobYuc.png' %}" alt="SEFOET" class="brand-image img-circle elevation-3" style="opacity:.8; width:30px; height:30px;">
+        <span class="brand-text font-weight-light"> SEFOET </span>
+      </a>
+      
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{% url 'u_home_priv' %}" class="nav-link">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'u_home' %}" class="nav-link">Publico</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Proveedores</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{% url 'u_prov_list' %}" class="dropdown-item">Lista </a></li>
+              <li><a href="{% url 'u_prov_new' %}" class="dropdown-item">Agregar</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Categorias</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{% url 'u_cat_list' %}" class="dropdown-item">Lista </a></li>
+              <li><a href="{% url 'u_cat_new' %}" class="dropdown-item">Agregar</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Usuarios</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{% url 'u_usr_list' %}" class="dropdown-item">Lista </a></li>
+              <li><a href="{% url 'u_usr_new' %}" class="dropdown-item">Agregar</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right navbar links -->
+      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-user fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-header">{{ request.user }}</span>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'u_usr_logout' %}" class="dropdown-item dropdown-footer">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>
